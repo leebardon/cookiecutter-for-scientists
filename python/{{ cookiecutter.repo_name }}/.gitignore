@@ -4,8 +4,8 @@ docs/site/
 /Users/leebardon/Development/cookiecutter_for_scientists/TO_DO.txt
 
 # Large datafiles
-/data/*
-/results/*
+#/data/*
+#/results/*
 
 # vs code
 .vscode/*
