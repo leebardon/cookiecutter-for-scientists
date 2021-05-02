@@ -16,7 +16,7 @@ BUILD_DIR := $(abspath $(dir $(lastword $(MAKEFILE_LIST)))/../)
 ## Set up Julia environment
 create_project:
 	@echo ">>> Setting Julia virtual environment...."
-	cd $(BUILD_DIR) ; mv $(PROJECT_NAME) "$(PROJECT_NAME)_tmp"
+	cd $(BUILD_DIR) ; mv $(PROJECT_NAME) $(PROJECT_NAME)_tmp
 	cd $(BUILD_DIR) ; julia -e 'using Pkg; Pkg.generate("$(PROJECT_NAME)")'
 	@echo ">>> Building project structure..."
 	mkdir $(BUILD_DIR)/$(PROJECT_NAME)/data/
@@ -29,7 +29,6 @@ create_project:
 	cp -rf $(BUILD_DIR)/$(PROJECT_NAME)_tmp/src/. $(BUILD_DIR)/$(PROJECT_NAME)/src/
 	cp -rf $(BUILD_DIR)/$(PROJECT_NAME)_tmp/docs/. $(BUILD_DIR)/$(PROJECT_NAME)/docs/
 	cp $(BUILD_DIR)/$(PROJECT_NAME)_tmp/Makefile $(BUILD_DIR)/$(PROJECT_NAME)
-	cd $(BUILD_DIR)
 	rm -rf $(BUILD_DIR)/$(PROJECT_NAME)_tmp
 
 #################################################################################

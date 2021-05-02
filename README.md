@@ -1,12 +1,11 @@
-# Research Software Development Template
+# Software Development Template for Scientists
 
-A tool to help scientists structure their software projects in accordance with the following broad aims:
+A tool to help scientists achieve the following:
 
 ```
-1. To encourage the development of readable, reusable, & extendable code;
-2. To build technical frameworks and research workflows that improve productivity & reproducibility;
-3. To waste less time on 'grunt work' & focus on further, deeper scientific questions;
-4. To easily leverage and build on previous work, and to accelerate data-driven discovery.
+1. Develop readable, reusable, & extendable codebases;
+2. Build technical frameworks that improve productivity & reproducibility;
+3. Easily leverage previous work to accelerate data-driven discovery.
 ```
 
 The template has been loosely based on the Model-View-Controller design pattern widely used in building web applications, but adapted here to suit scientific software development.
@@ -49,64 +48,66 @@ $ make lint
 
 ### For Julia 
 ---
-Julia uses its own native system to manage virtual environments and dependancies. 
+Julia uses its own native system to manage virtual environments and dependancies (which has been implemented into the Makefile included with the template). Once you've downloaded Cookiecutter and its Python requirements, run the following command from the directory that you'd like to create your Julia project in: 
 
 ```bash
 cookiecutter gh:/teatauri/cookiecutter-for-scientists --directory="julia"
 ``` 
+
+You'll be guided through the initial set-up. Once completed, navigate to your new project folder and run the following:
+
+```bash
+make create_project
+```
+
+This will generate a Julia environment and download project dependancies using Pkg, Julia's built-in package manager. Once this has completed, navigate back into the parent directory and re-enter the project folder.   
+
  
 # Directory Tree
 
     ├── LICENSE
     ├── Makefile           <- Great alternative to e.g. bash scripts for automating stuff!
-    ├── README.md          <- Project overview and guide to setting up & running the software
+    ├── README.md          <- Quick guide for other users/reviewers/future-you to learn about your work
     │ 
     ├── data
-    │   ├── interim        <- Place to store intermediate, transformed data
+    │   ├── interim        <- For storing intermediate, transformed data
     │   ├── processed      <- Final data ready to be used by models or in analyses
     │   ├── raw            <- The original, immutable data dump
     │   └── imported       <- Pre-processed data from another project/external source
     │
-    ├── docs               <- Sphinx default for making lovely docs! See https://www.sphinx-doc.org/
     │
-    ├── notebooks          <- Jupyter notebooks for exploration & method development on test data.
+    ├── notebooks          <- Jupyter/Pluto notebooks for data exploration & method development
     │                         Naming convention: `1.0-initial-data-exploration`.
     │
-    ├── results            <- Any written summaries, discussion, analysis in e.g. PDF, LaTeX
+    ├── results            
+    │   ├── papers         <- Any completed/in-progress papers and notes 
     │   └── figures        <- Final figures for reporting or publishing
     │
-    ├── requirements.txt   <- Package & dependency environment for the project
-    │                         Generate with `pip freeze > requirements.txt`
+    ├── requirements       <- Package & dependency environment for the project
+    │                         (requirements.txt in Python, Manifest.toml n Julia)
     │
-    ├── setup.py           <- Makes project pip installable (pip install -e .) so src can be imported
     │
     ├── src                <- Main body of code lives in here
-    │   ├── __init__.py    <- Tells Python to treat src directory as a callable module
+    │   ├── __init__.py    <- Python-only - to treat src directory as a callable module
     │   │
     │   ├── controllers    <- Scripts for mediating data & passing to models or views
     │   │   │
-    │   │   ├── plotting_controller.py
-    │   │   └── models_controller.py
+    │   │   ├── plotting_controller.py/.jl
+    │   │   └── models_controller.py/.jl
     │   │
     │   ├── models         <- Scripts that process & manipulate data (algorithms, simulation, ML models)
     │   │   │
-    │   │   ├── make_predictions.py
-    │   │   ├── process_results.py
-    │   │   └── train_models.py
+    │   │   ├── make_predictions.py/.jl
+    │   │   ├── process_results.py/.jl
+    │   │   └── train_models.py/.jl
     │   │
     │   └── views          <- Scripts for visualising outputs (e.g. figs, diagrams, tables)
     │       │
-    │       ├── generate_maps.py
-    │       └── scatter_plots.py
+    │       ├── generate_maps.py/.jl
+    │       └── scatter_plots.py/.jl
     │
-    └── tox.ini            <- Python version & virtualenv testing - tox.readthedocs.io
+    └── git-info.pdf       <- Cheatsheet for common git commands - super important!
 
-
-### Run Tests:
----
-```bash
-$ py.test tests
-```
 
 ### Credits
 ---
