@@ -5,7 +5,7 @@
 #################################################################################
 
 PROJECT_NAME = {{ cookiecutter.repo_name }}
-LOWER_NAME  = $(shell echo $(PROJECT_NAME) | tr A-Z a-z)
+TEMP_NAME = {{ cookiecutter.temp_name }}
 BUILD_DIR := $(abspath $(dir $(lastword $(MAKEFILE_LIST)))/../)
 
 
@@ -16,20 +16,20 @@ BUILD_DIR := $(abspath $(dir $(lastword $(MAKEFILE_LIST)))/../)
 
 ## Set up Julia environment
 create_project:
-	cd $(BUILD_DIR) ; julia -e 'using Pkg; Pkg.generate("$(LOWER_NAME)")'
-	cd $(BUILD_DIR) ; julia -e 'using Pkg; Pkg.activate("$(LOWER_NAME)")'
+	cd $(BUILD_DIR) ; julia -e 'using Pkg; Pkg.generate("$(PROJECT_NAME)")'
+	cd $(BUILD_DIR) ; julia -e 'using Pkg; Pkg.activate("$(PROJECT_NAME)")'
 	cd $(BUILD_DIR) ; julia -e 'using Pkg; Pkg.add("Pluto")'
-	mkdir $(BUILD_DIR)/$(LOWER_NAME)/data/
-	mkdir $(BUILD_DIR)/$(LOWER_NAME)/notebooks/
-	mkdir $(BUILD_DIR)/$(LOWER_NAME)/results/
-	mkdir $(BUILD_DIR)/$(LOWER_NAME)/docs/
-	cp -rf $(BUILD_DIR)/$(PROJECT_NAME)_tmp/data/. $(BUILD_DIR)/$(LOWER_NAME)/data/
-	cp -rf $(BUILD_DIR)/$(PROJECT_NAME)_tmp/notebooks/. $(BUILD_DIR)/$(LOWER_NAME)/notebooks/
-	cp -rf $(BUILD_DIR)/$(PROJECT_NAME)_tmp/results/. $(BUILD_DIR)/$(LOWER_NAME)/results/
-	cp -rf $(BUILD_DIR)/$(PROJECT_NAME)_tmp/src/. $(BUILD_DIR)/$(LOWER_NAME)/src/
-	cp -rf $(BUILD_DIR)/$(PROJECT_NAME)_tmp/docs/. $(BUILD_DIR)/$(LOWER_NAME)/docs/
-	cp $(BUILD_DIR)/$(PROJECT_NAME)_tmp/Makefile $(BUILD_DIR)/$(LOWER_NAME)
-	rm -rf $(BUILD_DIR)/$(PROJECT_NAME)
+	mkdir $(BUILD_DIR)/$(PROJECT_NAME)/data/
+	mkdir $(BUILD_DIR)/$(PROJECT_NAME)/notebooks/
+	mkdir $(BUILD_DIR)/$(PROJECT_NAME)/results/
+	mkdir $(BUILD_DIR)/$(PROJECT_NAME)/docs/
+	cp -rf $(BUILD_DIR)/$(TEMP_NAME)/data/. $(BUILD_DIR)/$(PROJECT_NAME)/data/
+	cp -rf $(BUILD_DIR)/$(TEMP_NAME)/notebooks/. $(BUILD_DIR)/$(PROJECT_NAME)/notebooks/
+	cp -rf $(BUILD_DIR)/$(TEMP_NAME)/results/. $(BUILD_DIR)/$(PROJECT_NAME)/results/
+	cp -rf $(BUILD_DIR)/$(TEMP_NAME)/src/. $(BUILD_DIR)/$(PROJECT_NAME)/src/
+	cp -rf $(BUILD_DIR)/$(TEMP_NAME)/docs/. $(BUILD_DIR)/$(PROJECT_NAME)/docs/
+	cp $(BUILD_DIR)/$(TEMP_NAME)/Makefile $(BUILD_DIR)/$(PROJECT_NAME)
+	rm -rf $(BUILD_DIR)/$(TEMP_NAME)
 
 #################################################################################
 # PROJECT RULES                                                                 #
