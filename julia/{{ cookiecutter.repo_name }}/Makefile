@@ -18,6 +18,9 @@ create_project:
 	@echo ">>> Setting Julia virtual environment...."
 	cd $(BUILD_DIR) ; mv $(PROJECT_NAME) $(PROJECT_NAME)_tmp
 	cd $(BUILD_DIR) ; julia -e 'using Pkg; Pkg.generate("$(PROJECT_NAME)")'
+	cd $(BUILD_DIR) ; julia -e 'using Pkg; Pkg.activate("$(PROJECT_NAME)")'
+	cd $(BUILD_DIR) ; julia -e 'using Pkg; Pkg.add("Pluto")'
+	cd $(BUILD_DIR) ; julia -e 'using Pkg; Pkg.generate("Dataframes")'
 	@echo ">>> Building project structure..."
 	mkdir $(BUILD_DIR)/$(PROJECT_NAME)/data/
 	mkdir $(BUILD_DIR)/$(PROJECT_NAME)/notebooks/
