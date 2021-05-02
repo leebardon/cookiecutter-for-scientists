@@ -18,20 +18,18 @@ create_project:
 	@echo ">>> Setting Julia virtual environment...."
 	cd $(BUILD_DIR) ; mv $(PROJECT_NAME) "$(PROJECT_NAME)_tmp"
 	cd $(BUILD_DIR) ; julia -e 'using Pkg; Pkg.generate("$(PROJECT_NAME)")'
-	@echo ">>> Activating environment...."
-	cd $(BUILD_DIR) ; julia -e 'using Pkg; Pkg.activate("$(PROJECT_NAME)")'
 	@echo ">>> Building project structure..."
 	mkdir $(BUILD_DIR)/$(PROJECT_NAME)/data/
 	mkdir $(BUILD_DIR)/$(PROJECT_NAME)/notebooks/
 	mkdir $(BUILD_DIR)/$(PROJECT_NAME)/results/
 	mkdir $(BUILD_DIR)/$(PROJECT_NAME)/docs/
-	cp -rf $(BUILD_DIR)/$(PROJECT_NAME)_tmp/data/* $(BUILD_DIR)/$(PROJECT_NAME)/data/
-	cp -rf $(BUILD_DIR)/$(PROJECT_NAME)_tmp/notebooks/* $(BUILD_DIR)/$(PROJECT_NAME)/notebooks/
-	cp -rf $(BUILD_DIR)/$(PROJECT_NAME)_tmp/results/* $(BUILD_DIR)/$(PROJECT_NAME)/results/
-	cp -rf $(BUILD_DIR)/$(PROJECT_NAME)_tmp/src/* $(BUILD_DIR)/$(PROJECT_NAME)/src/
-	cp -rf $(BUILD_DIR)/$(PROJECT_NAME)_tmp/docs/* $(BUILD_DIR)/$(PROJECT_NAME)/docs/
+	cp -rf $(BUILD_DIR)/$(PROJECT_NAME)_tmp/data/. $(BUILD_DIR)/$(PROJECT_NAME)/data/
+	cp -rf $(BUILD_DIR)/$(PROJECT_NAME)_tmp/notebooks/. $(BUILD_DIR)/$(PROJECT_NAME)/notebooks/
+	cp -rf $(BUILD_DIR)/$(PROJECT_NAME)_tmp/results/. $(BUILD_DIR)/$(PROJECT_NAME)/results/
+	cp -rf $(BUILD_DIR)/$(PROJECT_NAME)_tmp/src/. $(BUILD_DIR)/$(PROJECT_NAME)/src/
+	cp -rf $(BUILD_DIR)/$(PROJECT_NAME)_tmp/docs/. $(BUILD_DIR)/$(PROJECT_NAME)/docs/
 	rm -rf $(BUILD_DIR)/$(PROJECT_NAME)_tmp
-
+	cd $(BUILD_DIR)
 
 #################################################################################
 # PROJECT RULES                                                                 #
