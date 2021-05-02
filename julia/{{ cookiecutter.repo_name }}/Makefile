@@ -19,8 +19,12 @@ create_project:
 	cd $(BUILD_DIR) ; mv $(PROJECT_NAME) "$(PROJECT_NAME)_tmp"
 	cd $(BUILD_DIR) ; julia -e 'using Pkg; Pkg.generate("$(PROJECT_NAME)")'
 	@echo ">>> Activating environment...."
-	cd $(BUILD_DIR) ; julia -e 'using Pkg; Pkg.activate($(PROJECT_NAME))'
+	cd $(BUILD_DIR) ; julia -e 'using Pkg; Pkg.activate("$(PROJECT_NAME)")'
 	@echo ">>> Building project structure..."
+	mkdir $(BUILD_DIR)/$(PROJECT_NAME)/data/
+	mkdir $(BUILD_DIR)/$(PROJECT_NAME)/notebooks/
+	mkdir $(BUILD_DIR)/$(PROJECT_NAME)/results/
+	mkdir $(BUILD_DIR)/$(PROJECT_NAME)/docs/
 	cp -rf $(BUILD_DIR)/$(PROJECT_NAME)_tmp/data/* $(BUILD_DIR)/$(PROJECT_NAME)/data/
 	cp -rf $(BUILD_DIR)/$(PROJECT_NAME)_tmp/notebooks/* $(BUILD_DIR)/$(PROJECT_NAME)/notebooks/
 	cp -rf $(BUILD_DIR)/$(PROJECT_NAME)_tmp/results/* $(BUILD_DIR)/$(PROJECT_NAME)/results/
