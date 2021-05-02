@@ -1,0 +1,10 @@
+
+1. Create demo application (python, julia, r), so users can see how all the parts fit together. Give them different endpoints, allow uses to choose which demo set to include
+2. Create demo jupyter notebooks, with instructions and use cases (python, julia, r)
+3. Quickstart instructions in README
+            	---> download package & dev deps
+		---> run makefle & create virtual environment
+		---> adding packages to env
+		---> getting started with git/initiating repo
+		---> running the demos 
+4. Create github.io with more detailed instructions, project motivations

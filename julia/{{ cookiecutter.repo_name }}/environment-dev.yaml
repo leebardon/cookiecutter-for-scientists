@@ -1,0 +1,29 @@
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - appdirs=1.4.4=pyh9f0ad1d_0
+  - black=21.4b0=pyhd8ed1ab_0
+  - ca-certificates=2020.12.5=h033912b_0
+  - certifi=2020.12.5=py39h6e9494a_1
+  - click=7.1.2=pyh9f0ad1d_0
+  - dataclasses=0.8=pyhc8e2a94_1
+  - libcxx=11.1.0=habf9029_0
+  - libffi=3.3=h046ec9c_2
+  - mypy_extensions=0.4.3=py39h6e9494a_3
+  - ncurses=6.2=h2e338ed_4
+  - openssl=1.1.1k=h0d85af4_0
+  - pathspec=0.8.1=pyhd3deb0d_0
+  - python=3.9.2=h2502468_0_cpython
+  - python_abi=3.9=1_cp39
+  - readline=8.1=h05e3726_0
+  - regex=2021.4.4=py39h89e85a6_0
+  - setuptools=49.6.0=py39h6e9494a_3
+  - tk=8.6.10=h0419947_1
+  - toml=0.10.2=pyhd8ed1ab_0
+  - typed-ast=1.4.3=py39h89e85a6_0
+  - typing_extensions=3.7.4.3=py_0
+  - tzdata=2021a=he74cb21_0
+  - wheel=0.36.2=pyhd3deb0d_0
+  - xz=5.2.5=haf1e3a3_1
+  - zlib=1.2.11=h7795811_1010
