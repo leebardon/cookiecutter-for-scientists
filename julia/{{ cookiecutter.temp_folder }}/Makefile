@@ -16,11 +16,8 @@ BUILD_DIR := $(abspath $(dir $(lastword $(MAKEFILE_LIST)))/../)
 
 
 ## Set up Julia environment
-create_project:
+create_environment:
 	@echo ">>> setting up Julia environment..."
-	@cd $(BUILD_DIR) ; julia -e 'using Pkg; Pkg.generate("$(PROJECT_NAME)")'
-	@cd $(BUILD_DIR) ; julia -e 'using Pkg; Pkg.activate("$(PROJECT_NAME)")'
-	@echo ">>> adding packages..."
 	@cd $(BUILD_DIR) ; julia -e 'using Pkg; Pkg.add("Pluto")'
 	@mkdir $(BUILD_DIR)/$(PROJECT_NAME)/data/
 	@mkdir $(BUILD_DIR)/$(PROJECT_NAME)/notebooks/
@@ -35,6 +32,16 @@ create_project:
 	@echo ""
 	@echo ">>> $(PROJECT_NAME) has been created at $(BUILD_DIR)"
 	@rm -rf $(BUILD_DIR)/$(TEMP_NAME)
+
+
+install_requirements:
+	@echo ">>> activating $(PROJECT_NAME) environment..."
+	@julia -e 'using Pkg; Pkg.activate(".")'
+	@echo ">>> installing core packages..."
+	@julia -e 'using Pkg; Pkg.add("Pluto")'
+	@julia -e 'using Pkg; Pkg.add("DataFrames")'
+	@echo ""
+	@echo ">>> You're good to go! :D " 
 
 #################################################################################
 # PROJECT RULES                                                                 #
