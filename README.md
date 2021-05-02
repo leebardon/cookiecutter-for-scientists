@@ -24,8 +24,6 @@ First, satisfy Cookiecutter's Python requirements, then follow the Cookiecutter 
 
 ### For Python
 ---
-Cookiecutter recommends using pip for installation, but here we use conda, as our aim is to work towards a language-agnostic and OS-portable template system for scientists.  
-
 Please install a [system appropriate version of Miniconda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) before proceeding.
 
 To start a new Python project, obtain a copy of the template by running the below command and following the instructions: 
@@ -53,7 +51,10 @@ $ make lint
 ---
 Julia uses its own native system to manage virtual environments and dependancies. 
 
-  
+```bash
+cookiecutter gh:/teatauri/cookiecutter-for-scientists --directory="julia"
+``` 
+ 
 # Directory Tree
 
     ├── LICENSE

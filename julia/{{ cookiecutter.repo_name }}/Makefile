@@ -28,8 +28,9 @@ create_project:
 	cp -rf $(BUILD_DIR)/$(PROJECT_NAME)_tmp/results/. $(BUILD_DIR)/$(PROJECT_NAME)/results/
 	cp -rf $(BUILD_DIR)/$(PROJECT_NAME)_tmp/src/. $(BUILD_DIR)/$(PROJECT_NAME)/src/
 	cp -rf $(BUILD_DIR)/$(PROJECT_NAME)_tmp/docs/. $(BUILD_DIR)/$(PROJECT_NAME)/docs/
-	rm -rf $(BUILD_DIR)/$(PROJECT_NAME)_tmp
+	cp $(BUILD_DIR)/$(PROJECT_NAME)_tmp/Makefile $(BUILD_DIR)/$(PROJECT_NAME)
 	cd $(BUILD_DIR)
+	rm -rf $(BUILD_DIR)/$(PROJECT_NAME)_tmp
 
 #################################################################################
 # PROJECT RULES                                                                 #
