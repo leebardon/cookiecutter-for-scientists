@@ -22,7 +22,7 @@ create_project:
 	@echo ">>> Building project structure..."
 
 	@echo ">>> Activating environment...."
-	cd $(BUILD_DIR) ; julia -e 'activate("$(PROJECT_NAME)2")'
+	cd $(BUILD_DIR) ; julia -e 'activate $(PROJECT_NAME)'
 
 
 #################################################################################
