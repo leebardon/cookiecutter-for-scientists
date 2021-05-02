@@ -6,7 +6,7 @@
 #################################################################################
 
 PROJECT_NAME = {{ cookiecutter.repo_name }}
-TEMP_NAME = {{ cookiecutter.temp_name }}
+TEMP_NAME = {{ cookiecutter.temp_folder }}
 BUILD_DIR := $(abspath $(dir $(lastword $(MAKEFILE_LIST)))/../)
 
 
