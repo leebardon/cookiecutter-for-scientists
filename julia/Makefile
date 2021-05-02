@@ -1,4 +1,4 @@
-.PHONY: clean data lint requirements sync_data_to_s3 sync_data_from_s3
+.PHONY: clean lint requirements
 
 #################################################################################
 # GLOBALS                                                                       #
@@ -25,8 +25,6 @@ create_project:
 	@echo ">>> Activating environment...."
 	cd $(BUILD_DIR) ; julia -e 'activate("$(PROJECT_NAME)2")'
 
-test_environment:
-	$(PYTHON_VERSION) test_environment.py
 
 #################################################################################
 # PROJECT RULES                                                                 #

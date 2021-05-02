@@ -1,57 +1,29 @@
-.PHONY: clean data lint requirements sync_data_to_s3 sync_data_from_s3
+.PHONY: clean lint requirements
 
 #################################################################################
 # GLOBALS                                                                       #
 #################################################################################
 
-PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
+#PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 PROJECT_NAME = {{ cookiecutter.repo_name }}
-PYTHON_VERSION = {{ cookiecutter.python_version }}
-
-ifeq (,$(shell which conda))
-HAS_CONDA=False
-else
-HAS_CONDA=True
-endif
+BUILD_DIR := $(abspath $(dir $(lastword $(MAKEFILE_LIST)))/../)
 
 
 #################################################################################
 # COMMANDS                                                                      #
 #################################################################################
 
-## Install Python Dependencies
-requirements: test_environment
-	conda env update --file environment-dev.yaml
 
-# Delete unnecessary python compiled files
-clean:
-	find . -type f -name "*.py[co]" -delete
-	find . -type d -name "__pycache__" -delete
+## Set up Julia environment
+create_project:
+	@echo ">>> Setting Julia virtual environment...."
+	cd $(BUILD_DIR) ; mv $(PROJECT_NAME) "$(PROJECT_NAME)_dummy"
+	cd $(BUILD_DIR) ; julia -e 'using Pkg; Pkg.generate("$(PROJECT_NAME)")'
+	@echo ">>> Building project structure..."
 
-## Lint using black
-lint:
-	black src
+	@echo ">>> Activating environment...."
+	cd $(BUILD_DIR) ; julia -e 'activate("$(PROJECT_NAME)2")'
 
-
-## Set up python interpreter environment
-create_environment:
-ifeq (True,$(HAS_CONDA))
-		@echo ">>> Creating conda virtual environment."
-ifeq (3,$(findstring 3,$(PYTHON_VERSION)))
-	conda create --name $(PROJECT_NAME) python=3
-else
-	conda create --name $(PROJECT_NAME) python=2.7
-endif
-		@echo ">>> VIRTUAL ENVIRONMENT CREATED." 
-		@echo ""
-		@echo "PLEASE RUN:  conda activate $(PROJECT_NAME)"
-else
-		@echo ">>> FAILED!! Conda not found. Please download and run command again." 
-endif
-
-
-test_environment:
-	$(PYTHON_VERSION) test_environment.py
 
 #################################################################################
 # PROJECT RULES                                                                 #
