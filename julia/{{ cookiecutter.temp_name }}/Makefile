@@ -17,10 +17,10 @@ BUILD_DIR := $(abspath $(dir $(lastword $(MAKEFILE_LIST)))/../)
 
 ## Set up Julia environment
 create_project:
-	echo ">>> setting up Julia environment..."
+	@echo ">>> setting up Julia environment..."
 	@cd $(BUILD_DIR) ; julia -e 'using Pkg; Pkg.generate("$(PROJECT_NAME)")'
 	@cd $(BUILD_DIR) ; julia -e 'using Pkg; Pkg.activate("$(PROJECT_NAME)")'
-	echo ">>> adding packages..."
+	@echo ">>> adding packages..."
 	@cd $(BUILD_DIR) ; julia -e 'using Pkg; Pkg.add("Pluto")'
 	@mkdir $(BUILD_DIR)/$(PROJECT_NAME)/data/
 	@mkdir $(BUILD_DIR)/$(PROJECT_NAME)/notebooks/
@@ -32,9 +32,9 @@ create_project:
 	@cp -rf $(BUILD_DIR)/$(TEMP_NAME)/src/. $(BUILD_DIR)/$(PROJECT_NAME)/src/
 	@cp -rf $(BUILD_DIR)/$(TEMP_NAME)/docs/. $(BUILD_DIR)/$(PROJECT_NAME)/docs/
 	@cp $(BUILD_DIR)/$(TEMP_NAME)/Makefile $(BUILD_DIR)/$(PROJECT_NAME)
+	@echo ""
+	@echo ">>> $(PROJECT_NAME) has been created at $(BUILD_DIR)"
 	@rm -rf $(BUILD_DIR)/$(TEMP_NAME)
-	echo ""
-	echo ">>> $(PROJECT_NAME) has been created at $(BUILD_DIR)"
 
 #################################################################################
 # PROJECT RULES                                                                 #
