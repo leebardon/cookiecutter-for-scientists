@@ -18,7 +18,7 @@ BUILD_DIR := $(abspath $(dir $(lastword $(MAKEFILE_LIST)))/../)
 ## Set up Julia environment
 create_environment:
 	@echo ">>> setting up Julia environment..."
-	@cd $(BUILD_DIR) ; julia -e 'using Pkg; Pkg.add("Pluto")'
+	@cd $(BUILD_DIR) ; julia -e 'using Pkg; Pkg.generate("$(PROJECT_NAME)")'
 	@mkdir $(BUILD_DIR)/$(PROJECT_NAME)/data/
 	@mkdir $(BUILD_DIR)/$(PROJECT_NAME)/notebooks/
 	@mkdir $(BUILD_DIR)/$(PROJECT_NAME)/results/
@@ -43,14 +43,6 @@ install_requirements:
 	@echo ""
 	@echo ">>> You're good to go! :D " 
 
-#################################################################################
-# PROJECT RULES                                                                 #
-#################################################################################
-
-
-
-
-#################################################################################
 # Self Documenting Commands                                                     #
 #################################################################################
 
