@@ -29,8 +29,6 @@ To explain this concept within the context of the current project, it would be i
 
 # Getting Started
 
----
-
 This project was built using Cookiecutter: a command-line utility that allows us to develop custom templates for quickly bootstrapping the set-up of software projects while avoiding common mistakes.
 
 First, satisfy Cookiecutter's Python requirements, then follow the Cookiecutter installation instructions according to your own system and preferences (apt-get, brew, pip, conda, etc):
