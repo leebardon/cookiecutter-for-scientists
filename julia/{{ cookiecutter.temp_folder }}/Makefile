@@ -8,7 +8,7 @@
 PROJECT_NAME = {{ cookiecutter.repo_name }}
 TEMP_NAME = {{ cookiecutter.temp_folder }}
 BUILD_DIR := $(abspath $(dir $(lastword $(MAKEFILE_LIST)))/../)
-
+PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
 #################################################################################
 # COMMANDS                                                                      #
@@ -34,12 +34,20 @@ create_environment:
 	@rm -rf $(BUILD_DIR)/$(TEMP_NAME)
 
 
-install_requirements:
-	@echo ">>> activating $(PROJECT_NAME) environment..."
-	@julia -e 'using Pkg; Pkg.activate(".")'
-	@echo ">>> installing core packages..."
-	@julia -e 'using Pkg; Pkg.add("Pluto")'
-	@julia -e 'using Pkg; Pkg.add("DataFrames")'
+# intall dev requirements
+requirements:
+	@echo ">>> activating $(PROJECT_NAME) environment and installing packages..."
+	@julia -e 'using Pkg; Pkg.activate(".") ; Pkg.add("Pluto") ; Pkg.add("OhMyREPL") ; Pkg.add("Revise")'
+	@echo ""
+	@echo ">>> Creating and configuring ~/.julia/config/startup.jl ..."
+	@mkdir ~/.julia/config/
+	@touch ~/.julia/config/startup.jl
+	@cat "'using Pkg' >> ~/.julia/config/startup.jl"
+	@cat "'if isfile("Project.toml") && isfile("Manifest.toml")' >> ~/.julia/config/startup.jl"
+	@cat "'	Pkg.activate(".")' >> ~/.julia/config/startup.jl"
+	@cat "'end' >> ~/.julia/config/startup.jl"
+	@cat "'using OhMyREPL' >> ~/.julia/config/startup.jl"
+	@cat "'using Revise' >> ~/.julia/config/startup.jl"
 	@echo ""
 	@echo ">>> You're good to go! :D " 
 
