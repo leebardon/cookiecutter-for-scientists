@@ -1,6 +1,6 @@
 # Software Development Template for Scientists
 
-## A tool to help scientists achieve the following:
+## A tool to help scientists:
 
 > 1.  Develop readable, reusable, & extendable codebases;
 >
@@ -99,5 +99,4 @@ Julia uses its own native system to manage virtual environments and dependancies
 
 ---
 
-- This cookiecutter was built using the rather wonderful [cookiecutter project](https://cookiecutter.readthedocs.io/)
-- It was adapted from the well-considered data science project outline developed by [Driven Data](https://www.drivendata.org/).
+- This cookiecutter is based on the excellent [cookiecutter project](https://cookiecutter.readthedocs.io/)
