@@ -46,7 +46,20 @@ requirements:
 	@echo 'if isfile("Project.toml") && isfile("Manifest.toml")' >> ~/.julia/config/startup.jl
 	@echo '         Pkg.activate(".")' >> ~/.julia/config/startup.jl
 	@echo 'end' >> ~/.julia/config/startup.jl
-	@echo 'using OhMyREPL' >> ~/.julia/config/startup.jl
+	@echo 'atreplinit() do repl' >> ~/.julia/config/startup.jl
+	@echo '    try' >> ~/.julia/config/startup.jl
+	@echo '		@eval using OhMyREPL' >> ~/.julia/config/startup.jl
+	@echo '    catch e' >> ~/.julia/config/startup.jl
+	@echo '		@warn "error while importing OhMyREPL" e' >> ~/.julia/config/startup.jl
+	@echo '    end' >> ~/.julia/config/startup.jl
+	@echo 'end' >> ~/.julia/config/startup.jl
+	@echo 'atreplinit() do repl' >> ~/.julia/config/startup.jl
+	@echo '    try' >> ~/.julia/config/startup.jl
+	@echo '         @eval using Revise' >> ~/.julia/config/startup.jl
+	@echo '    catch e' >> ~/.julia/config/startup.jl
+	@echo '         @warn "error while importing OhMyREPL" e' >> ~/.julia/config/startup.jl
+	@echo '    end' >> ~/.julia/config/startup.jl
+	@echo 'end' >> ~/.julia/config/startup.jl
 	@echo 'using Revise' >> ~/.julia/config/startup.jl
 	@echo ""
 	@echo ">>> You're good to go! :D "
