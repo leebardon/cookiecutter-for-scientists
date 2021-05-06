@@ -10,18 +10,18 @@
 
 ---
 
-The template has been loosely based on the Model-View-Controller (MVC) design pattern widely used in building web applications, but adapted here to suit scientific software development. The MVC approach allows us to separate out the various parts of a given software project according to their function (i.e. data processing, input handling, output generating, etc), organising the project logically so that it's easier to resuse, extend and maintain. As a quick primer on how this has been interepreted in the context of a scientific research project:
+The template has been loosely based on the Model-View-Controller (MVC) design pattern widely used in building web applications, but adapted here to suit scientific software development. The MVC approach allows us to separate out the various parts of a given software project according to their function (i.e. data processing, input handling, output generating, etc), organising the project logically so that it's easier to resuse, extend and maintain. 
 
-**MODEL**
-The model handles application data, and the rules for manipulating and transforming that data. You could think of the model as e.g. a series of functions that operate on data objects. Perhaps you have a file called "diversity*index.jl" which contained a series of functions. This file would be created inside the \_model* directory, along with, say, "size_distribution.jl", both of which may be considered as separate logical modules within your project.
+As a quick primer on how MVC has been interepreted in the context of a scientific research project:
 
-**VIEW**
+**MODEL** - 
+The model handles application data, and the rules for manipulating and transforming that data. You could think of the model as e.g. a series of functions that operate on data objects. For example, say you have a series of functions contained within the file *diversityindex.jl*. This file would be created inside the *model* directory, along with e.g. *size_distribution.j*, both of which may be considered as separate logical modules within your project.
+
+**VIEW** - 
 The view, broadly, is a visualisation of the state of the model. For example, you might have developed a block of code that takes the output from "diversity*index.jl" and produces a heatmap. You might call this file "heatmap.jl" and place it into the \_view* directory.
 
-**CONTROLLER**
-I like to think of the controller as procedural mediator between the model and the view functionality.
-
-To explain this concept within the context of the current project, it would be illustrative to demonstrate a suggested workflow:
+**CONTROLLER** - 
+I like to think of the controller as procedural mediator between the model and the view functionality. To explain this concept within the context of the current project, it would be illustrative to demonstrate a suggested workflow:
 
 1. _DiversityIndexController.jl_ takes a dataset from the data/raw directory in the root of the project and passes it to a series of funtions in _diversity_index.jl_;
 2. _diversity_index.jl_ passes a transformed dataset back to _DiversityIndexController.jl_, which proceeds to save the output into the processed data directory, before passing it to _heatmap.jl_;
