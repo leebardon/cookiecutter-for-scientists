@@ -2,12 +2,13 @@
 
 This README will guide you through the process of setting up your Julia project framework. By the end, you'll have achieved the following:
 
-```
 1. Generated a template to help organise and compartmentalise your Julia code (great way to start building resuable, extendable "research engines");
+
 2. Created a virtual environment for your Julia project (generates a Project.toml and Manifest.toml to avoid dependency conflicts and allow others to easily run your code);
+
 3. Created (or amended) a startup.jl file to automatically activate the correct virtual environment when you run Julia within the project directory;
+
 4. Created (or amended) a startup.jl file to automatically activate some super helpful packages -[OhMyREPL](https://github.com/KristofferC/OhMyREPL.jl) for syntax highlighting and [Revise](https://github.com/timholy/Revise.jl) for updating functions on-the-fly without needing to restart a Julia session;
-```
 
 ### Before You Start:
 
