@@ -39,6 +39,9 @@ requirements:
 	@echo ">>> activating $(PROJECT_NAME) environment and installing packages..."
 	@julia -e 'using Pkg; Pkg.activate(".") ; Pkg.add("Pluto") ; Pkg.add("OhMyREPL") ; Pkg.add("Revise")'
 	@echo ""
+	
+	
+startup:	
 	@echo ">>> Creating and configuring ~/.julia/config/startup.jl ..."
 	@mkdir -p ~/.julia/config/
 	@touch -a ~/.julia/config/startup.jl
