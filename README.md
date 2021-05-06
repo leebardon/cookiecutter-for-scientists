@@ -1,20 +1,37 @@
 # Software Development Template for Scientists
 
-A tool to help scientists achieve the following:
+## A tool to help scientists achieve the following:
 
 > 1.  Develop readable, reusable, & extendable codebases;
-
+>
 > 2.  Build technical frameworks that improve productivity & reproducibility;
-
+>
 > 3.  Easily leverage previous work to accelerate data-driven discovery.
 
-The template has been loosely based on the Model-View-Controller design pattern widely used in building web applications, but adapted here to suit scientific software development.
+---
+
+The template has been loosely based on the Model-View-Controller (MVC) design pattern widely used in building web applications, but adapted here to suit scientific software development. The MVC approach allows us to separate out the various parts of a given software project according to their function (i.e. data processing, input handling, output generating, etc), organising the project logically so that it's easier to resuse, extend and maintain. As a quick primer on how this has been interepreted in the context of a scientific research project:
+
+**MODEL**
+The model handles application data, and the rules for manipulating and transforming that data. You could think of the model as e.g. a series of functions that operate on data objects. Perhaps you have a file called "diversity*index.jl" which contained a series of functions. This file would be created inside the \_model* directory, along with, say, "size_distribution.jl", both of which may be considered as separate logical modules within your project.
+
+**VIEW**
+The view, broadly, is a visualisation of the state of the model. For example, you might have developed a block of code that takes the output from "diversity*index.jl" and produces a heatmap. You might call this file "heatmap.jl" and place it into the \_view* directory.
+
+**CONTROLLER**
+I like to think of the controller as procedural mediator between the model and the view functionality.
+
+To explain this concept within the context of the current project, it would be illustrative to demonstrate a suggested workflow:
+
+1. _DiversityIndexController.jl_ takes a dataset from the data/raw directory in the root of the project and passes it to a series of funtions in _diversity_index.jl_;
+2. _diversity_index.jl_ passes a transformed dataset back to _DiversityIndexController.jl_, which proceeds to save the output into the processed data directory, before passing it to _heatmap.jl_;
+3. _heatmap.jl_ generates the plot, and saves it to results/figures directory.
 
 ### How To Use:
 
 ---
 
-This project was built using Cookiecutter: a command-line utility that allows us to define a structural template and quickly bootstrap the project set-upprocess, while avoiding common mistakes. Cookiecutter was originally build for Python projects, but has been generalised, and is now an incredbly useful, flexible tool for improving workflow.
+This project was built using Cookiecutter: a command-line utility that allows us to develop custom templates for quickly bootstrapping the set-up of software projects while avoiding common mistakes.
 
 First, satisfy Cookiecutter's Python requirements, then follow the Cookiecutter installation instructions according to your own system and preferences (apt-get, brew, pip, conda, etc):
 
@@ -25,49 +42,15 @@ First, satisfy Cookiecutter's Python requirements, then follow the Cookiecutter 
 
 ---
 
-Please install a [system appropriate version of Miniconda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) before proceeding.
+Please install a [system appropriate version of Miniconda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) the package manager before proceeding.
 
-To start a new Python project, obtain a copy of the template by running the below command and following the instructions:
-
-```bash
-$ cookiecutter https://github.com/teatauri/cookiecutter_for_scientists --directory="python"
-```
-
-Change directory into your new project folder and run the following make command to set up your Python interpreter and virtual environment:
-
-```bash
-$ make create_environment
-```
-
-The virtual environment will be created either via conda. Follow the instructions to activate the virtual environment, then run the following command to install requirements:
-
-```bash
-$ make requirements
-```
-
-This will also check that your Python environment is set up correctly, and set your src folder up as a package, so that you can easily import modules between files within src. At any time, the following command will format the code in your src folder using the [black](https://pypi.org/project/black/) package.
-
-```bash
-$ make lint
-```
+Then, navigate to the [python-specific](https://github.com/teatauri/cookiecutter-for-scientists/tree/master/python) README for further instructions.
 
 ### For Julia
 
 ---
 
-Julia uses its own native system to manage virtual environments and dependancies (which has been implemented into the Makefile included with the template). Once you've downloaded Cookiecutter and its Python requirements, run the following command from the directory that you'd like to create your Julia project in:
-
-```bash
-cookiecutter gh:/teatauri/cookiecutter-for-scientists --directory="julia"
-```
-
-You'll be guided through the initial set-up. Once completed, navigate to your new project folder and run the following:
-
-```bash
-make create_project
-```
-
-This will generate a Julia environment and download project dependancies using Pkg, Julia's built-in package manager. Once this has completed, navigate back into the parent directory and re-enter the project folder.
+Julia uses its own native system to manage virtual environments and dependancies (which has been implemented into the Makefile included with the template). Once you've downloaded Cookiecutter and its Python requirements, please navigate to the [Julia-specific](https://github.com/teatauri/cookiecutter-for-scientists/tree/master/julia) README for further set-up instructions.
 
 # Directory Tree
 
