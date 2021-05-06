@@ -42,14 +42,14 @@ requirements:
 	@echo ">>> Creating and configuring ~/.julia/config/startup.jl ..."
 	@mkdir ~/.julia/config/
 	@touch ~/.julia/config/startup.jl
-	@cat "'using Pkg' >> ~/.julia/config/startup.jl"
-	@cat "'if isfile("Project.toml") && isfile("Manifest.toml")' >> ~/.julia/config/startup.jl"
-	@cat "'	Pkg.activate(".")' >> ~/.julia/config/startup.jl"
-	@cat "'end' >> ~/.julia/config/startup.jl"
-	@cat "'using OhMyREPL' >> ~/.julia/config/startup.jl"
-	@cat "'using Revise' >> ~/.julia/config/startup.jl"
+	@echo 'using Pkg' >> ~/.julia/config/startup.jl
+	@echo 'if isfile("Project.toml") && isfile("Manifest.toml")' >> ~/.julia/config/startup.jl
+	@echo '         Pkg.activate(".")' >> ~/.julia/config/startup.jl
+	@echo 'end' >> ~/.julia/config/startup.jl
+	@echo 'using OhMyREPL' >> ~/.julia/config/startup.jl
+	@echo 'using Revise' >> ~/.julia/config/startup.jl
 	@echo ""
-	@echo ">>> You're good to go! :D " 
+	@echo ">>> You're good to go! :D "
 
 # Self Documenting Commands                                                     #
 #################################################################################
