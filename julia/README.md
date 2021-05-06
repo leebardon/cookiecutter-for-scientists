@@ -30,9 +30,9 @@ cookiecutter gh:/teatauri/cookiecutter-for-scientists --directory="julia"
 
 You'll then be guided through a series of questions. Note that the values within the square brackets indicates the default - press enter to accept.
 
-1. **project_name** - (\*it's perfectly find to call it e.g. "test" if you don't have a specific project in mind at present);
+1. **project_name** - it's perfectly find to call it e.g. "test" if you don't have a specific project in mind at present;
 2. **temp_folder** - this is needed during initial set-up. Press enter to accept.
-3. **repo_name** - What you'd like to call your git repository (the default is your project name in lowercase, with underscores replacing illegal whitespace);
+3. **repo_name** - name your git repository (default is your project name in lowercase, with underscores replacing illegal whitespace);
 4. **author_name** - Add your own name, or the lab name, whichever is appropriate;
 5. **description** - A short one-liner about the project, fine to leave blank;
 6. **Select open_source licence** - Choose '3', unless you plan to create an open-source package.
