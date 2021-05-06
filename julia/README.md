@@ -2,10 +2,12 @@
 
 This README will guide you through the process of setting up your Julia project framework. By the end, you'll have achieved the following:
 
+```
 1. Generated a template to help organise and compartmentalise your Julia code (great way to start building resuable, extendable "research engines");
 2. Created a virtual environment for your Julia project (generates a Project.toml and Manifest.toml to avoid dependency conflicts and allow others to easily run your code);
 3. Created (or amended) a startup.jl file to automatically activate the correct virtual environment when you run Julia within the project directory;
 4. Created (or amended) a startup.jl file to automatically activate some super helpful packages -[OhMyREPL](https://github.com/KristofferC/OhMyREPL.jl) for syntax highlighting and [Revise](https://github.com/timholy/Revise.jl) for updating functions on-the-fly without needing to restart a Julia session;
+```
 
 ### Before You Start:
 
@@ -27,12 +29,12 @@ cookiecutter gh:/teatauri/cookiecutter-for-scientists --directory="julia"
 
 You'll then be guided through a series of questions. Note that the values within the square brackets indicates the default - press enter to accept.
 
-1. project_name - (\*it's perfectly find to call it e.g. "test" if you don't have a specific project in mind at present);
-2. temp_folder - this is needed during initial set-up. Press enter to accept.
-3. repo_name - What you'd like to call your git repository (the default is your project name in lowercase, with underscores replacing illegal whitespace);
-4. author_name - Add your own name, or the lab name, whichever is appropriate;
-5. description - A short one-liner about the project, fine to leave blank;
-6. Select open_source licence - Choose '3', unless you plan to create an open-source package.
+1. **project_name** - (\*it's perfectly find to call it e.g. "test" if you don't have a specific project in mind at present);
+2. **temp_folder** - this is needed during initial set-up. Press enter to accept.
+3. **repo_name** - What you'd like to call your git repository (the default is your project name in lowercase, with underscores replacing illegal whitespace);
+4. **author_name** - Add your own name, or the lab name, whichever is appropriate;
+5. **description** - A short one-liner about the project, fine to leave blank;
+6. **Select open_source licence** - Choose '3', unless you plan to create an open-source package.
 
 ### 2. Set Up Environment:
 
