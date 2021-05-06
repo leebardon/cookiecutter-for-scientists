@@ -27,7 +27,7 @@ To explain this concept within the context of the current project, it would be i
 2. _diversity_index.jl_ passes a transformed dataset back to _DiversityIndexController.jl_, which proceeds to save the output into the processed data directory, before passing it to _heatmap.jl_;
 3. _heatmap.jl_ generates the plot, and saves it to results/figures directory.
 
-### How To Use:
+# Getting Started
 
 ---
 
