@@ -1,115 +1,79 @@
-# Research Software Development Template
+# Julia Project Framework for Scientists
 
-A tool to help scientists structure their software projects in accordance with the following broad aims:
+This README will guide you through the process of setting up your Julia project framework. By the end, you'll have achieved the following:
 
-```
-1. To encourage the development of readable, reusable, & extendable code;
-2. To build technical frameworks and research workflows that improve productivity & reproducibility;
-3. To waste less time on 'grunt work' & focus on further, deeper scientific questions;
-4. To easily leverage and build on previous work, and to accelerate data-driven discovery.
-```
+1. Generated a template to help organise and compartmentalise your Julia code (great way to start building resuable, extendable "research engines");
+2. Created a virtual environment for your Julia project (generates a Project.toml and Manifest.toml to avoid dependency conflicts and allow others to easily run your code);
+3. Created (or amended) a startup.jl file to automatically activate the correct virtual environment when you run Julia within the project directory;
+4. Created (or amended) a startup.jl file to automatically activate some super helpful packages -[OhMyREPL](https://github.com/KristofferC/OhMyREPL.jl) for syntax highlighting and [Revise](https://github.com/timholy/Revise.jl) for updating functions on-the-fly without needing to restart a Julia session;
 
-The template has been loosely based on the Model-View-Controller design pattern widely used in building web applications, but adapted here to suit scientific software development.
+### Before You Start:
 
-
-### How To Use:
 ---
-First, satisfy Cookiecutter requirements by ensuring that you have the following:
 
-- Python 2.7 or 3.5+
-- [Cookiecutter Python package](http://cookiecutter.readthedocs.org/en/latest/installation.html) >= 1.4.0: Can be installed via pip by or conda:
+First, ensure that you have satisfied Cookiecutter requirements, as described in [the main README](https://github.com/teatauri/cookiecutter-for-scientists). It's probably self-evident, but also ensure that you have a working copy of [Julia](https://julialang.org/downloads/) installed on your system.
 
-```bash
-$ pip install cookiecutter
-```
-or
+I also **HIGHLY** recommend downloading [VSCode](https://code.visualstudio.com/). It's an open-source, cross-platform text editor and IDE that supports a multitude of programming languages with a wide variety of extentions that will make your code-life much easier and more efficient. This includes everything from auto-completion to helping identify bugs and suggesting solutions, to giving tips on the style and structure of your code. It even allows you to mount a remote machine via ssh, so you can use all of your favourite local desktop tools remotely. [This blog post](https://techytok.com/julia-vscode/) gives a good overview, specifically tailored to running Julia in VSCode.
 
-```bash
-$ conda config --add channels conda-forge
-$ conda install cookiecutter
-```
-If you primarily use Python, or have experience as a Python developer, you may prefer to use Pipenv for tracking dependencies and virtual environments. However, our aim for this project is a language-agnostic and OS portable template, so we implement conda here. 
+### 1. Create a New Project:
 
-
-Please install a [system appropriate version of Miniconda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) before proceeding.
-
-### Start a New Project:
 ---
-Obtain a copy of the template by running the below command and following the instructions: 
+
+In the terminal/command line, navigate to the directory that you'd like to create your project in and run the following command:
 
 ```bash
-$ cookiecutter https://github.com/teatauri/cookiecutter_for_scientists
+cookiecutter gh:/teatauri/cookiecutter-for-scientists --directory="julia"
 ```
 
-Change directory into your new project folder and run the following make command to set up your Python interpreter and virtual environment: 
-```bash
-$ make create_environment
-```
-The virtual environment will be created either via conda. Follow the instructions to activate the virtual environment, then run the following command to install requirements:
+You'll then be guided through a series of questions. Note that the values within the square brackets indicates the default - press enter to accept.
 
-```bash
-$ make requirements
-```
-This will also check that your Python environment is set up correctly, and set your src folder up as a package, so that you can easily import modules between files within src. At any time, the following command will forrmat the code in your src folder using the [black](https://pypi.org/project/black/) package. 
+1. project_name - (\*it's perfectly find to call it e.g. "test" if you don't have a specific project in mind at present);
+2. temp_folder - this is needed during initial set-up. Press enter to accept.
+3. repo_name - What you'd like to call your git repository (the default is your project name in lowercase, with underscores replacing illegal whitespace);
+4. author_name - Add your own name, or the lab name, whichever is appropriate;
+5. description - A short one-liner about the project, fine to leave blank;
+6. Select open_source licence - Choose '3', unless you plan to create an open-source package.
 
-```bash
-$ make lint
-```
-  
-# Directory Tree
+### 2. Set Up Environment:
 
-    ├── LICENSE
-    ├── Makefile           <- Great alternative to e.g. bash scripts for automating stuff!
-    ├── README.md          <- Project overview and guide to setting up & running the software
-    │ 
-    ├── data
-    │   ├── interim        <- Place to store intermediate, transformed data
-    │   ├── processed      <- Final data ready to be used by models or in analyses
-    │   ├── raw            <- The original, immutable data dump
-    │   └── imported       <- Pre-processed data from another project/external source
-    │
-    ├── docs               <- Sphinx default for making lovely docs! See https://www.sphinx-doc.org/
-    │
-    ├── notebooks          <- Jupyter notebooks for exploration & method development on test data.
-    │                         Naming convention: `1.0-initial-data-exploration`.
-    │
-    ├── results            <- Any written summaries, discussion, analysis in e.g. PDF, LaTeX
-    │   └── figures        <- Final figures for reporting or publishing
-    │
-    ├── requirements.txt   <- Package & dependency environment for the project
-    │                         Generate with `pip freeze > requirements.txt`
-    │
-    ├── setup.py           <- Makes project pip installable (pip install -e .) so src can be imported
-    │
-    ├── src                <- Main body of code lives in here
-    │   ├── __init__.py    <- Tells Python to treat src directory as a callable module
-    │   │
-    │   ├── controllers    <- Scripts for mediating data & passing to models or views
-    │   │   │
-    │   │   ├── plotting_controller.py
-    │   │   └── models_controller.py
-    │   │
-    │   ├── models         <- Scripts that process & manipulate data (algorithms, simulation, ML models)
-    │   │   │
-    │   │   ├── make_predictions.py
-    │   │   ├── process_results.py
-    │   │   └── train_models.py
-    │   │
-    │   └── views          <- Scripts for visualising outputs (e.g. figs, diagrams, tables)
-    │       │
-    │       ├── generate_maps.py
-    │       └── scatter_plots.py
-    │
-    └── tox.ini            <- Python version & virtualenv testing - tox.readthedocs.io
-
-
-### Run Tests:
 ---
+
+Navigate to the temporary folder created in the above step (e.g. "julia_temp"). You'll see that the folder has been populated with a variety of files and subdirectories. This includes a Makefile, which I've built to help you get setup quickly. From inside your temporary folder, execute the following command:
+
 ```bash
-$ py.test tests
+make create_environment
 ```
 
-### Credits
+This calls a make "rule" that automatically sets your project up as a Julia package with its very own virtual environment with an empty Project.toml. It also removes the temporary folder created earlier.
+
+Then call:
+
+```bash
+make requirements
+```
+
+This adds [Pluto.jl](https://towardsdatascience.com/reactive-data-analysis-with-julia-in-pluto-notebooks-b4652defd03e) to your environment, plus the useful tools mentioned earlier. In doing so, a Manifest.toml file is created to store specfic details of your project's packages and recursive dependancies.
+
+If this is your **first time** using this template, you should also run the following command:
+
+```bash
+make startup
+```
+
+This will create a startup.jl file (if you don't already have one), and add some lines to acheve the following functonality:
+
+1. Automatcally activate your project environment when you launch the Julia REPL within a project with an existing Project.toml;
+2. Automatically load "OhMyREPL" for syntax highlighting in your Julia REPL;
+3. Automatically load "Revise" for on-the-fly function updates.
+
+If you do already have a startup.jl, the relevant code wll be appended to the bottom.
+
+### 3. Explore Julia!
+
 ---
-* This cookiecutter was built using the rather wonderful [cookiecutter project](https://cookiecutter.readthedocs.io/) 
-* It was adapted from the well-considered data science project outline developed by [Driven Data](https://www.drivendata.org/).
+
+TO-DO
+
+1. Create Pluto notebooks to demo interactive functionality
+2. Create demo project using MVC design pattern
+3. Add details to main readme RE version control, etc.
