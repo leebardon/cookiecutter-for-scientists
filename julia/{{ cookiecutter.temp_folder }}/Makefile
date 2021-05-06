@@ -40,8 +40,8 @@ requirements:
 	@julia -e 'using Pkg; Pkg.activate(".") ; Pkg.add("Pluto") ; Pkg.add("OhMyREPL") ; Pkg.add("Revise")'
 	@echo ""
 	@echo ">>> Creating and configuring ~/.julia/config/startup.jl ..."
-	@mkdir ~/.julia/config/
-	@touch ~/.julia/config/startup.jl
+	@mkdir -p ~/.julia/config/
+	@touch -a ~/.julia/config/startup.jl
 	@echo 'using Pkg' >> ~/.julia/config/startup.jl
 	@echo 'if isfile("Project.toml") && isfile("Manifest.toml")' >> ~/.julia/config/startup.jl
 	@echo '         Pkg.activate(".")' >> ~/.julia/config/startup.jl
