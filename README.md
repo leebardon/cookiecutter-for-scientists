@@ -21,7 +21,7 @@ The model handles application data, and the rules for manipulating and transform
 The view, broadly speaking, is a visualisation of the state of the model. For example, you might have developed a block of code within a file called *heatmap.jl* that takes the output from *diversity_index.jl* and produces a heatmap. This file would be contained within the *view* directory.
 
 **CONTROLLER** - 
-I like to think of the controller as procedural mediator between model and view functionality. To explain this concept within the context of the current project, it would be illustrative to demonstrate a suggested workflow:
+I like to think of the controller as procedural mediator between model and view functionality. For clarity, consider the following context-specific workflow:
 
 1. _DiversityIndexController.jl_ takes a dataset from the data/raw directory in the root of the project and passes it to a series of funtions in _diversity_index.jl_;
 2. _diversity_index.jl_ passes a transformed dataset back to _DiversityIndexController.jl_, which proceeds to save the output into the processed data directory, before passing it to _heatmap.jl_;
@@ -38,7 +38,6 @@ First, satisfy Cookiecutter's Python requirements, then follow the Cookiecutter 
 - [Cookiecutter package](http://cookiecutter.readthedocs.org/en/latest/installation.html)
 
 ### For Python
-
 ---
 
 Please install a [system appropriate version of Miniconda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) the package manager before proceeding.
@@ -46,7 +45,6 @@ Please install a [system appropriate version of Miniconda](https://conda.io/proj
 Then, navigate to the [python-specific](https://github.com/teatauri/cookiecutter-for-scientists/tree/master/python) README for further instructions.
 
 ### For Julia
-
 ---
 
 Julia uses its own native system to manage virtual environments and dependancies (which has been implemented into the Makefile included with the template). Once you've downloaded Cookiecutter and its Python requirements, please navigate to the [Julia-specific](https://github.com/teatauri/cookiecutter-for-scientists/tree/master/julia) README for further set-up instructions.
@@ -72,7 +70,7 @@ Julia uses its own native system to manage virtual environments and dependancies
     │   └── figures        <- Final figures for reporting or publishing
     │
     ├── requirements       <- Package & dependency environment for the project
-    │                         (requirements.txt in Python, Manifest.toml n Julia)
+    │                         (requirements.txt in Python, Manifest.toml in Julia)
     │
     │
     ├── src                <- Main body of code lives in here
@@ -80,19 +78,18 @@ Julia uses its own native system to manage virtual environments and dependancies
     │   │
     │   ├── controllers    <- Scripts for mediating data & passing to models or views
     │   │   │
-    │   │   ├── plotting_controller.py/.jl
-    │   │   └── models_controller.py/.jl
+    │   │   ├── example_controller_1.py/.jl
+    │   │   └── example_controller_2.py/.jl
     │   │
     │   ├── models         <- Scripts that process & manipulate data (algorithms, simulation, ML models)
     │   │   │
-    │   │   ├── make_predictions.py/.jl
-    │   │   ├── process_results.py/.jl
-    │   │   └── train_models.py/.jl
+    │   │   ├── example_model_1.py/.jl
+    │   │   └── example_model_2.py/.jl
     │   │
     │   └── views          <- Scripts for visualising outputs (e.g. figs, diagrams, tables)
     │       │
-    │       ├── generate_maps.py/.jl
-    │       └── scatter_plots.py/.jl
+    │       ├── example_view_1.py/.jl
+    │       └── example_view_2.py/.jl
     │
     └── git-info.pdf       <- Cheatsheet for common git commands - super important!
 
