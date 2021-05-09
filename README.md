@@ -97,4 +97,5 @@ Julia uses its own native system to manage virtual environments and dependancies
 
 ---
 
-- This cookiecutter is based on the excellent [cookiecutter project](https://cookiecutter.readthedocs.io/)
+- This cookiecutter was built using the excellent [cookiecutter project](https://cookiecutter.readthedocs.io/)
+- It was influenced by the data science project template developed by [Data Driven](https://drivendata.github.io/cookiecutter-data-science/)
