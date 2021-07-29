@@ -1,0 +1,8 @@
+{
+    "juliaFormatter.formatDocstrings": true,
+    "julia.execution.inlineResults.colors": {
+    
+    },
+    "julia.execution.resultType": "inline, errors in REPL",
+    "jupyter.jupyterServerType": "local"
+}

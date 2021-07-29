@@ -71,9 +71,32 @@ This will create a startup.jl file (if you don't already have one), and add some
 
 If you do already have a startup.jl, the relevant code wll be appended to the bottom.
 
-### 3. Explore Julia!
+### 3. Pluto Notebooks
 
 ---
+
+In the /notebooks directory, you'll find some Pluto Notebooks that cover some of the basics of Julia, as inspired by Julia Academy, and various other online sources. To run, enter the /notebooks the notebooks directory, launch the Julia REPL, and check existing packages in the environment:
+
+'''
+julia
+'''
+Then enter pkg> and check status:
+'''
+]
+pkg> status
+'''
+
+If PlutoUI is not there (as should be the case on a fresh install of this template), download it:
+
+'''
+pkg> add PlutoUI
+'''
+
+Once PlutoUI is downloaded, exit pkg> by hitting backspace and run a notebook from the Julia REPL:
+
+'''
+using Pluto; Plyto.run(notebook="path/to/notebook.jl")
+'''
 
 TO-DO
 
