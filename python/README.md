@@ -1,4 +1,4 @@
-# Research Software Development Template
+# Python Project Framework for Scientists
 
 A tool to help scientists structure their software projects in accordance with the following broad aims:
 
@@ -33,83 +33,54 @@ If you primarily use Python, or have experience as a Python developer, you may p
 
 Please install a [system appropriate version of Miniconda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) before proceeding.
 
-### Start a New Project:
+
+### 1. Create a New Project:
 ---
-Obtain a copy of the template by running the below command and following the instructions: 
+In the terminal/command line, navigate to the directory that you'd like to create your project in and run the following command:
 
 ```bash
-$ cookiecutter https://github.com/teatauri/cookiecutter_for_scientists
+cookiecutter gh:/teatauri/cookiecutter-for-scientists --directory="python"
 ```
 
+You'll then be guided through a series of questions. Note that the values within the square brackets indicates the default - press enter to accept.
+
+1. **project_name** - it's perfectly find to call it e.g. "test" if you don't have a specific project in mind at present;
+2. **repo_name** - name your git repository (default is your project name in lowercase, with underscores replacing illegal whitespace);
+3. **author_name** - Add your own name, or the lab name, whichever is appropriate;
+4. **description** - A short one-liner about the project, fine to leave blank;
+5. **select open_source licence** - Choose '3', unless you plan to create an open-source package.
+
+
+
+### 2. Set Up Environment:
+---
 Change directory into your new project folder and run the following make command to set up your Python interpreter and virtual environment: 
+
 ```bash
 $ make create_environment
 ```
-The virtual environment will be created either via conda. Follow the instructions to activate the virtual environment, then run the following command to install requirements:
+The virtual environment will be created via conda. Follow the instructions to activate the virtual environment, then run the following command to install dev requirements:
 
 ```bash
 $ make requirements
 ```
-This will also check that your Python environment is set up correctly, and set your src folder up as a package, so that you can easily import modules between files within src. At any time, the following command will forrmat the code in your src folder using the [black](https://pypi.org/project/black/) package. 
+This will also check that your Python environment is set up correctly, and set your src folder up as a package, so that you can easily import modules between files within src. At any time, the following command will format the code in your src folder using the [black](https://pypi.org/project/black/) package. 
 
 ```bash
 $ make lint
 ```
   
-# Directory Tree
+### 3. Explore Python
 
-    ├── LICENSE
-    ├── Makefile           <- Great alternative to e.g. bash scripts for automating stuff!
-    ├── README.md          <- Project overview and guide to setting up & running the software
-    │ 
-    ├── data
-    │   ├── interim        <- Place to store intermediate, transformed data
-    │   ├── processed      <- Final data ready to be used by models or in analyses
-    │   ├── raw            <- The original, immutable data dump
-    │   └── imported       <- Pre-processed data from another project/external source
-    │
-    ├── docs               <- Sphinx default for making lovely docs! See https://www.sphinx-doc.org/
-    │
-    ├── notebooks          <- Jupyter notebooks for exploration & method development on test data.
-    │                         Naming convention: `1.0-initial-data-exploration`.
-    │
-    ├── results            <- Any written summaries, discussion, analysis in e.g. PDF, LaTeX
-    │   └── figures        <- Final figures for reporting or publishing
-    │
-    ├── requirements.txt   <- Package & dependency environment for the project
-    │                         Generate with `pip freeze > requirements.txt`
-    │
-    ├── setup.py           <- Makes project pip installable (pip install -e .) so src can be imported
-    │
-    ├── src                <- Main body of code lives in here
-    │   ├── __init__.py    <- Tells Python to treat src directory as a callable module
-    │   │
-    │   ├── controllers    <- Scripts for mediating data & passing to models or views
-    │   │   │
-    │   │   ├── plotting_controller.py
-    │   │   └── models_controller.py
-    │   │
-    │   ├── models         <- Scripts that process & manipulate data (algorithms, simulation, ML models)
-    │   │   │
-    │   │   ├── make_predictions.py
-    │   │   ├── process_results.py
-    │   │   └── train_models.py
-    │   │
-    │   └── views          <- Scripts for visualising outputs (e.g. figs, diagrams, tables)
-    │       │
-    │       ├── generate_maps.py
-    │       └── scatter_plots.py
-    │
-    └── tox.ini            <- Python version & virtualenv testing - tox.readthedocs.io
+   
 
-
-### Run Tests:
+TO-DO
 ---
-```bash
-$ py.test tests
-```
 
-### Credits
----
-* This cookiecutter was built using the rather wonderful [cookiecutter project](https://cookiecutter.readthedocs.io/) 
-* It was adapted from the well-considered data science project outline developed by [Driven Data](https://www.drivendata.org/).
+1. Implement tests
+2. Create notebooks to demo basics of scientific python wrt oceanography
+3. Create demo application to show how MVC components interact
+4. Notebooks to demo version control? https://ohshitgit.com/ 
+
+
+

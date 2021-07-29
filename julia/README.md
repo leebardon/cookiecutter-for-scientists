@@ -1,14 +1,16 @@
 # Julia Project Framework for Scientists
 
-This README will guide you through the process of setting up your Julia project framework via the following steps:
+This framwork will allow you to quickly & easily achieve the following:
 
-1. Generate template to organise & compartmentalise your code (great way to start building resuable, extendable "research engines");
+> 1.  Generate a software project template to help organise & compartmentalise your code;
+>
+> 2.  Instantiate a Julia virtual environment to avoid dependency conflicts and enable portability;
+>
+> 3.  Create a startup.jl file to automatically activate environments within their project directory;
+>
+> 4.  Amend startup.jl file to automatically activate super helpful packages - [OhMyREPL](https://github.com/KristofferC/OhMyREPL.jl) for syntax highlighting and [Revise](https://github.com/timholy/Revise.jl) for updating functions on-the-fly without needing to restart a Julia session;
 
-2. Create Julia virtual environment (generates a Project.toml and Manifest.toml to avoid dependency conflicts and allow others to easily run your code);
-
-3. Create startup.jl file to automatically activate the correct environment when you launch Julia within the project directory;
-
-4. Amend startup.jl file to automatically activate super helpful packages - [OhMyREPL](https://github.com/KristofferC/OhMyREPL.jl) for syntax highlighting and [Revise](https://github.com/timholy/Revise.jl) for updating functions on-the-fly without needing to restart a Julia session;
+---
 
 ### Before You Start:
 
@@ -17,6 +19,8 @@ This README will guide you through the process of setting up your Julia project 
 First, ensure that you have satisfied Cookiecutter requirements, as described in [the main README](https://github.com/teatauri/cookiecutter-for-scientists). It's probably self-evident, but also ensure that you have a working copy of [Julia](https://julialang.org/downloads/) installed on your system.
 
 I also **HIGHLY** recommend downloading [VSCode](https://code.visualstudio.com/). It's an open-source, cross-platform text editor and IDE that supports a multitude of programming languages with a wide variety of extentions that will make your code-life much easier and more efficient. This includes everything from auto-completion to helping identify bugs and suggesting solutions, to giving tips on the style and structure of your code. It even allows you to mount a remote machine via ssh, so you can use all of your favourite local desktop tools remotely. [This blog post](https://techytok.com/julia-vscode/) gives a good overview, specifically tailored to running Julia in VSCode.
+
+---
 
 ### 1. Create a New Project:
 
@@ -36,6 +40,8 @@ You'll then be guided through a series of questions. Note that the values within
 4. **author_name** - Add your own name, or the lab name, whichever is appropriate;
 5. **description** - A short one-liner about the project, fine to leave blank;
 6. **Select open_source licence** - Choose '3', unless you plan to create an open-source package.
+
+---
 
 ### 2. Set Up Environment:
 

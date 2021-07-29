@@ -1,6 +1,6 @@
 # Software Development Template for Scientists
 
-## A tool to help scientists achieve the following:
+## A tool to help scientists:
 
 > 1.  Develop readable, reusable, & extendable codebases;
 >
@@ -10,22 +10,23 @@
 
 ---
 
-The template has been loosely based on the Model-View-Controller (MVC) design pattern widely used in building web applications, but adapted here to suit scientific software development. The MVC approach allows us to separate out the various parts of a given software project according to their function (i.e. data processing, input handling, output generating, etc), organising the project logically so that it's easier to resuse, extend and maintain. As a quick primer on how this has been interepreted in the context of a scientific research project:
+The template has been loosely based on the Model-View-Controller (MVC) design pattern widely used in building web applications, but adapted here to suit scientific software development. The MVC approach allows us to separate out the various parts of a given software project according to their function (i.e. data processing, input handling, output generating, etc), organising the project logically so that it's easier to resuse, extend and maintain. 
 
-**MODEL**
-The model handles application data, and the rules for manipulating and transforming that data. You could think of the model as e.g. a series of functions that operate on data objects. Perhaps you have a file called "diversity*index.jl" which contained a series of functions. This file would be created inside the \_model* directory, along with, say, "size_distribution.jl", both of which may be considered as separate logical modules within your project.
+As a quick primer on how MVC has been interepreted in the context of a scientific research project:
 
-**VIEW**
-The view, broadly, is a visualisation of the state of the model. For example, you might have developed a block of code that takes the output from "diversity*index.jl" and produces a heatmap. You might call this file "heatmap.jl" and place it into the \_view* directory.
+**MODEL** - 
+The model handles application data, and the rules for manipulating and transforming that data. You could think of the model as e.g. a series of functions that operate on data objects. For example, say you have a series of functions contained within the file *diversityindex.jl*. This file would be created inside the *model* directory, along with e.g. *size_distribution.jl*, both of which may be considered as separate logical modules within your project.
 
-**CONTROLLER**
-I like to think of the controller as procedural mediator between the model and the view functionality.
+**VIEW** - 
+The view, broadly speaking, is a visualisation of the state of the model. For example, you might have developed a block of code within a file called *heatmap.jl* that takes the output from *diversity_index.jl* and produces a heatmap. This file would be contained within the *view* directory.
 
-To explain this concept within the context of the current project, it would be illustrative to demonstrate a suggested workflow:
+**CONTROLLER** - 
+I like to think of the controller as procedural mediator between model and view functionality. For clarity, consider the following context-specific workflow:
 
 1. _DiversityIndexController.jl_ takes a dataset from the data/raw directory in the root of the project and passes it to a series of funtions in _diversity_index.jl_;
 2. _diversity_index.jl_ passes a transformed dataset back to _DiversityIndexController.jl_, which proceeds to save the output into the processed data directory, before passing it to _heatmap.jl_;
-3. _heatmap.jl_ generates the plot, and saves it to results/figures directory.
+3. _heatmap.jl_ generates the plot, and saves it to results/figures directory;
+4. Finally, outside the *src* folder, you may choose to 
 
 # Getting Started
 
@@ -37,7 +38,6 @@ First, satisfy Cookiecutter's Python requirements, then follow the Cookiecutter 
 - [Cookiecutter package](http://cookiecutter.readthedocs.org/en/latest/installation.html)
 
 ### For Python
-
 ---
 
 Please install a [system appropriate version of Miniconda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) the package manager before proceeding.
@@ -45,7 +45,6 @@ Please install a [system appropriate version of Miniconda](https://conda.io/proj
 Then, navigate to the [python-specific](https://github.com/teatauri/cookiecutter-for-scientists/tree/master/python) README for further instructions.
 
 ### For Julia
-
 ---
 
 Julia uses its own native system to manage virtual environments and dependancies (which has been implemented into the Makefile included with the template). Once you've downloaded Cookiecutter and its Python requirements, please navigate to the [Julia-specific](https://github.com/teatauri/cookiecutter-for-scientists/tree/master/julia) README for further set-up instructions.
@@ -71,7 +70,7 @@ Julia uses its own native system to manage virtual environments and dependancies
     │   └── figures        <- Final figures for reporting or publishing
     │
     ├── requirements       <- Package & dependency environment for the project
-    │                         (requirements.txt in Python, Manifest.toml n Julia)
+    │                         (requirements.txt in Python, Manifest.toml in Julia)
     │
     │
     ├── src                <- Main body of code lives in here
@@ -79,19 +78,18 @@ Julia uses its own native system to manage virtual environments and dependancies
     │   │
     │   ├── controllers    <- Scripts for mediating data & passing to models or views
     │   │   │
-    │   │   ├── plotting_controller.py/.jl
-    │   │   └── models_controller.py/.jl
+    │   │   ├── example_controller_1.py/.jl
+    │   │   └── example_controller_2.py/.jl
     │   │
     │   ├── models         <- Scripts that process & manipulate data (algorithms, simulation, ML models)
     │   │   │
-    │   │   ├── make_predictions.py/.jl
-    │   │   ├── process_results.py/.jl
-    │   │   └── train_models.py/.jl
+    │   │   ├── example_model_1.py/.jl
+    │   │   └── example_model_2.py/.jl
     │   │
     │   └── views          <- Scripts for visualising outputs (e.g. figs, diagrams, tables)
     │       │
-    │       ├── generate_maps.py/.jl
-    │       └── scatter_plots.py/.jl
+    │       ├── example_view_1.py/.jl
+    │       └── example_view_2.py/.jl
     │
     └── git-info.pdf       <- Cheatsheet for common git commands - super important!
 
@@ -99,5 +97,5 @@ Julia uses its own native system to manage virtual environments and dependancies
 
 ---
 
-- This cookiecutter was built using the rather wonderful [cookiecutter project](https://cookiecutter.readthedocs.io/)
-- It was adapted from the well-considered data science project outline developed by [Driven Data](https://www.drivendata.org/).
+- This cookiecutter was built using the excellent [cookiecutter project](https://cookiecutter.readthedocs.io/)
+- It was influenced by the data science project template developed by [Data Driven](https://drivendata.github.io/cookiecutter-data-science/)
