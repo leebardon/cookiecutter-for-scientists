@@ -31,15 +31,14 @@ create_environment:
 	@cp $(BUILD_DIR)/$(TEMP_NAME)/Makefile $(BUILD_DIR)/$(PROJECT_NAME)
 	@echo ""
 	@echo ">>> $(PROJECT_NAME) has been created at $(BUILD_DIR)"
-	@rm -rf $(BUILD_DIR)/$(TEMP_NAME)
+	@cd $(BUILD_DIR) && rm -rf $(TEMP_NAME)
 
 
 # intall dev requirements
 requirements:
 	@echo ">>> activating $(PROJECT_NAME) environment and installing packages..."
 	@julia -e 'using Pkg; Pkg.activate(".") ; Pkg.add("Pluto") ; Pkg.add("OhMyREPL") ; Pkg.add("Revise")'
-	@echo ""
-	
+	@echo ""	
 	
 startup:	
 	@echo ">>> Creating and configuring ~/.julia/config/startup.jl ..."
