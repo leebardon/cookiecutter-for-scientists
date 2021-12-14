@@ -11,15 +11,14 @@
 <!-- PROJECT TITLE -->
 <br />
 <div align="center">
-  <a href="https://github.com/leebardon/easy_slurm">
-  <img src="images/title_image.png" alt="Logo" width="600" height="190">
+<h1> Cookiecutter For Scientists </h1>
   </a>
 
 <h2 align="center"></h2>
 
   <p align="center">
     
-    Software Development Template for Scientists
+<!--      <h1>= Cookiecutter For Scientists =</h1> -->
     
   </p>
 </div>
@@ -50,9 +49,7 @@
 
 <!-- ABOUT THE PROJECT -->
 
-# Software Development Template for Scientists
-
-## A tool to help scientists:
+## A template to help scientists:
 
 >        1.  Develop readable, reusable, & extendable codebases;
 >
