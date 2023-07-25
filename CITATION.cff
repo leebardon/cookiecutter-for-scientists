@@ -11,5 +11,8 @@ authors:
     affiliation: University of Southern California
     orcid: 'https://orcid.org/0000-0001-5470-903X'
 abstract: >-
-
+  A software template to help scientists: 
+    (1). Develop readable, reusable, & extendable codebases; 
+    (2).  Build technical frameworks that improve productivity & reproducibility;
+    (3).  Easily leverage previous work to accelerate data-driven discovery.
 license: MIT
